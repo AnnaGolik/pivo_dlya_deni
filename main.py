@@ -2,7 +2,7 @@ from generator import *
 
 
 class Food:
-    def __init__(self): #инициализация пива
+    def __init__(self): #инициализация пиваа
         self.img = pygame.image.load('food.png').convert_alpha() #переводим в пиксели
         self.img = pygame.transform.scale(self.img, (TILE - 10, TILE - 10)) #масштабируем
         self.rect = self.img.get_rect() #делаем квадрат
