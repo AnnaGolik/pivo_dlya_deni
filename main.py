@@ -2,7 +2,7 @@ from generator import *
 
 
 class Food:
-    def __init__(self):
+    def __init__(self): #инициализация пива
         self.img = pygame.image.load('food.png').convert_alpha() #переводим в пиксели
         self.img = pygame.transform.scale(self.img, (TILE - 10, TILE - 10)) #масштабируем
         self.rect = self.img.get_rect() #делаем квадрат
@@ -22,7 +22,7 @@ def is_collide(x, y): #столкновения
     return True
 
 
-def eat_food():
+def eat_food(): #функция настижения цели
     for food in food_list:
         if player_rect.collidepoint(food.rect.center):
             food.set_pos()
