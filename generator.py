@@ -5,8 +5,9 @@ import pygame
 from random import choice, randrange
 
 RES = WIDTH, HEIGHT = 800, 602
-TILE = 100
+TILE = 100 #расстояние между стенами в лабиринте (размер клетки)
 cols, rows = WIDTH // TILE, HEIGHT // TILE
+
 
 class Cell:
     def __init__(self, x, y):
