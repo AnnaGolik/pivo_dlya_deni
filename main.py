@@ -3,10 +3,10 @@ from generator import *
 
 class Food:
     def __init__(self):
-        self.img = pygame.image.load('food.png').convert_alpha()
-        self.img = pygame.transform.scale(self.img, (TILE - 10, TILE - 10))
-        self.rect = self.img.get_rect()
-        self.set_pos()
+        self.img = pygame.image.load('food.png').convert_alpha() #переводим в пиксели
+        self.img = pygame.transform.scale(self.img, (TILE - 10, TILE - 10)) #масштабируем
+        self.rect = self.img.get_rect() #делаем квадрат
+        self.set_pos() #задаем позиции
 
     def set_pos(self):
         self.rect.topleft = randrange(cols) * TILE + 5, randrange(rows) * TILE + 5
@@ -15,7 +15,7 @@ class Food:
         game_surface.blit(self.img, self.rect)
 
 
-def is_collide(x, y):
+def is_collide(x, y): #столкновения
     tmp_rect = player_rect.move(x, y)
     if tmp_rect.collidelist(walls_collide_list) == -1:
         return False
@@ -63,14 +63,14 @@ game_surface = pygame.Surface(RES)
 surface = pygame.display.set_mode((WIDTH + 300, HEIGHT))
 clock = pygame.time.Clock()
 
-# images
+#загружаем картинки
 bg_game = pygame.image.load('bg-1.jpg').convert()
 bg = pygame.image.load('bg-main.png').convert()
 
-# get maze
+#создаем лабиринт
 maze = generate_maze()
 
-# player settings
+#настройки дэнчика
 player_speed = 5
 player_img = pygame.image.load('0.png').convert_alpha()
 player_img = pygame.transform.scale(player_img, (TILE - 2 * maze[0].thickness, TILE - 2 * maze[0].thickness))
@@ -80,19 +80,16 @@ directions = {'a': (-player_speed, 0), 'd': (player_speed, 0), 'w': (0, -player_
 keys = {'a': pygame.K_a, 'd': pygame.K_d, 'w': pygame.K_w, 's': pygame.K_s}
 direction = (0, 0)
 
-# food settings
 food_list = [Food() for i in range(3)]
 
-# collision list
+# столкновения
 walls_collide_list = sum([cell.get_rects() for cell in maze], [])
 
-# timer, score, record
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 time = 60
 score = 0
 record = get_record()
 
-# fonts
 font = pygame.font.SysFont('Helvetica', 90)
 text_font = pygame.font.SysFont('Helvetica', 50)
 
@@ -107,7 +104,7 @@ while True:
         if event.type == pygame.USEREVENT:
             time -= 1
 
-    # controls and movement
+    # движение
     pressed_key = pygame.key.get_pressed()
     for key, key_value in keys.items():
         if pressed_key[key_value] and not is_collide(*directions[key]):
@@ -116,22 +113,22 @@ while True:
     if not is_collide(*direction):
         player_rect.move_ip(direction)
 
-    # draw maze
+    #рисуем лабиринт
     [cell.draw(game_surface) for cell in maze]
 
-    # gameplay
+    # игра
     if eat_food():
         FPS += 10
         score += 1
     is_game_over()
 
-    # draw player
+    #рисуем дэнчика
     game_surface.blit(player_img, player_rect)
 
-    # draw food
+    #рисуем пивасик
     [food.draw() for food in food_list]
 
-    # draw stats
+    #рисуем таблички
     surface.blit(text_font.render('TIME', True, pygame.Color('red'), True), (WIDTH + 70, 30))
     surface.blit(font.render(f'{time}', True, pygame.Color('red')), (WIDTH + 70, 100))
     surface.blit(text_font.render('score:', True, pygame.Color('mediumvioletred'), True), (WIDTH + 60, 250))
@@ -139,6 +136,6 @@ while True:
     surface.blit(text_font.render('record:', True, pygame.Color('gold'), True), (WIDTH + 50, 450))
     surface.blit(font.render(f'{record}', True, pygame.Color('gold')), (WIDTH + 70, 500))
 
-    # print(clock.get_fps())
+    #рисуем счетчик
     pygame.display.flip()
     clock.tick(FPS)
