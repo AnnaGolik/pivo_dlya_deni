@@ -41,7 +41,7 @@ def is_game_over():
         time, score, FPS = 60, 0, 60
 
 
-def get_record():
+def get_record(): #создаем запись очков
     try:
         with open('record') as f:
             return f.readline()
@@ -51,7 +51,7 @@ def get_record():
             return 0
 
 
-def set_record(record, score):
+def set_record(record, score): #записываем очки
     rec = max(int(record), score)
     with open('record', 'w') as f:
         f.write(str(rec))
