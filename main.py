@@ -28,7 +28,7 @@ def eat_food(): #функция настижения цели
     return False
 
 
-def is_game_over(): #если игра закончилась, что делаем
+def is_game_over(): #если игра закончилась
     global time, score, record, FPS
     if time < 0:
         pygame.time.wait(700)
