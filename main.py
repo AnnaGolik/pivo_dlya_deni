@@ -92,7 +92,7 @@ font = pygame.font.SysFont('Helvetica', 90)
 text_font = pygame.font.SysFont('Helvetica', 50)
 
 while True:
-    surface.blit(bg, (WIDTH, 0))
+    surface.blit(bg, (WIDTH, 0)) #отрисовка поверхностей поверх фона
     surface.blit(game_surface, (0, 0))
     game_surface.blit(bg_game, (0, 0))
 
