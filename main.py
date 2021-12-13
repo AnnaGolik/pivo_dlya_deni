@@ -1,6 +1,4 @@
 from generator import *
-
-
 class Food:
     def __init__(self): #инициализация пиваа
         self.img = pygame.image.load('food.png').convert_alpha() #переводим в пиксели
