@@ -149,6 +149,4 @@ while True:
         clock.tick(FPS)
         self.rect.topleft = randrange(cols) * TILE + 5, randrange(rows) * TILE + 5
 
-    def draw(self):
-        game_surface.blit(self.img, self.rect)
 
