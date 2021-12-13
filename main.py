@@ -1,12 +1,4 @@
 from generator import *
-class Food:
-    def __init__(self): #инициализация пиваа
-        self.img = pygame.image.load('food.png').convert_alpha() #переводим в пиксели
-        self.img = pygame.transform.scale(self.img, (TILE - 10, TILE - 10)) #масштабируем
-        self.rect = self.img.get_rect() #делаем квадрат
-        self.set_pos() #задаем позиции
-
-    def set_pos(self):from generator import *
 
 
 class Food:
@@ -124,7 +116,7 @@ while True:
     #рисуем лабиринт
     [cell.draw(game_surface) for cell in maze]
 
-    # игра, при набирание очков увеличивается fps
+    # игра, при набирании очков увеличивается fps
     if eat_food():
         FPS += 10
         score += 1
