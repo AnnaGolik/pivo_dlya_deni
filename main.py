@@ -242,7 +242,7 @@ while True:
         if event.type == pygame.USEREVENT: #code
             time -= 1
 
-    # движение
+    # движение 
     pressed_key = pygame.key.get_pressed()
     for key, key_value in keys.items():
         if pressed_key[key_value] and not is_collide(*directions[key]):
