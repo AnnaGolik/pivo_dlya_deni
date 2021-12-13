@@ -1,6 +1,5 @@
 from generator import *
 
-
 class Food:
     def __init__(self): #инициализация пива
         self.img = pygame.image.load('food.png').convert_alpha() #переводим в пиксели
@@ -140,5 +139,3 @@ while True:
     pygame.display.flip()
         clock.tick(FPS)
         self.rect.topleft = randrange(cols) * TILE + 5, randrange(rows) * TILE + 5
-
-
