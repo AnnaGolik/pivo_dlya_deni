@@ -28,7 +28,7 @@ def eat_food(): #функция настижения цели
     return False
 
 
-def is_game_over():
+def is_game_over(): #если игра закончилась, что делаем
     global time, score, record, FPS
     if time < 0:
         pygame.time.wait(700)
@@ -97,9 +97,9 @@ while True:
     game_surface.blit(bg_game, (0, 0))
 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: #none
             exit()
-        if event.type == pygame.USEREVENT:
+        if event.type == pygame.USEREVENT: #code
             time -= 1
 
     # движение
