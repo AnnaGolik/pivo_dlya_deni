@@ -137,5 +137,5 @@ while True:
 
     #рисуем счетчик
     pygame.display.flip()
-        clock.tick(FPS)
-        self.rect.topleft = randrange(cols) * TILE + 5, randrange(rows) * TILE + 5
+    clock.tick(FPS)
+        
